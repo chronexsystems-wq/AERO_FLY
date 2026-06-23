@@ -26,19 +26,20 @@
   }
 
   body.dark-mode {
-    --bg-page: #0b0f19;       /* Chronex Deep Black/Navy */
+    --bg-page: #0b0f19;       
     --bg-panel: #141b2d;
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     --border: #2a3441;
     
-    --primary: #0060e6;       /* Chronex Bright Blue */
-    --primary-hover: #3a3889; /* Akanksha Navy */
+    --primary: #0060e6;       
+    --primary-hover: #3a3889; 
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
+    font-size: 16px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: var(--bg-page);
     color: var(--text-main);
@@ -70,10 +71,9 @@
   .brand-text h1 { font-size: 1.6rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; margin-bottom: 0.2rem; }
   .brand-text p  { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
-  /* Logos */
-  .logo-img { height: 45px; border-radius: 6px; object-fit: contain; }
+  .logo-img { height: 50px; border-radius: 6px; object-fit: contain; }
   .logo-akanksha { background: #ffffff; padding: 2px; } 
-  .logo-chronex { background: #000000; } 
+  .logo-chronex { background: #ffffff; padding: 2px; } 
 
   .theme-toggle {
     background: var(--bg-page); color: var(--text-main);
@@ -132,7 +132,6 @@
   .id-value { font-size: 2rem; font-weight: 800; color: var(--primary); letter-spacing: 0.05em; font-family: monospace; }
   .copy-btn { font-size: 0.8rem; padding: 0.5rem; margin-top: 1rem; width: 100%; }
 
-  /* FIX: PIN Input and Connect Button Container */
   .input-group label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--text-muted); margin-bottom: 0.5rem; text-transform: uppercase; }
   
   .input-action-wrapper {
@@ -140,8 +139,8 @@
     margin-bottom: 1.5rem;
   }
   .input-action-wrapper input {
-    flex: 1 1 55%; /* Takes exactly 55% of the width */
-    min-width: 0;  /* Crucial: prevents flexbox blowout */
+    flex: 1 1 50%;
+    min-width: 0;
     background: var(--bg-page); color: var(--text-main);
     border: 1px solid var(--border); border-radius: 8px;
     font-family: monospace; font-size: 1.15rem; font-weight: 700; text-align: center;
@@ -151,13 +150,12 @@
   .input-action-wrapper input::placeholder { color: var(--text-muted); opacity: 0.5; font-weight: 500; letter-spacing: normal; }
   
   .input-action-wrapper button {
-    flex: 1 1 45%; /* Takes exactly 45% of the width */
-    min-width: 0;  /* Crucial: prevents flexbox blowout */
+    flex: 1 1 50%;
+    min-width: 0;
     margin: 0; padding: 0.75rem 0.5rem;
     font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em;
   }
 
-  /* Status Indicator */
   .status-indicator {
     display: flex; align-items: center; justify-content: space-between;
     padding: 1rem; border: 1px solid var(--border); border-radius: 8px;
@@ -174,7 +172,6 @@
   .status-indicator.connecting { border-color: var(--accent); background: rgba(240, 113, 65, 0.05); color: var(--accent); }
   .status-indicator.connecting .status-dot { background: var(--accent); animation: pulseOrange 1s infinite; }
 
-  /* Log Terminal */
   .log-terminal {
     height: 120px; margin-top: 1.5rem; border: 1px solid var(--border); border-radius: 8px;
     padding: 1rem; font-size: 0.75rem; font-family: monospace; color: var(--text-muted);
@@ -255,7 +252,6 @@
   .transfer-controls { margin-top: 1.5rem; display: flex; gap: 1rem; }
   .folder-btn  { flex: 0 0 auto; height: 50px; }
   
-  /* Primary Send Action Color */
   button.send-btn { flex: 1; height: 50px; font-size: 1rem; background: var(--accent); }
   button.send-btn:hover:not(:disabled) { background: #e06030; box-shadow: 0 4px 12px rgba(240, 113, 65, 0.3); }
 
@@ -279,12 +275,12 @@
   </div>
   
   <div class="header-center brand-text">
-    <h1>AERO FLY</h1>
+    <h1>MedShare Link</h1>
     <p>Powered by Chronex Systems</p>
   </div>
 
   <div class="header-right">
-    <img src="logo.png" alt="Chronex Systems" class="logo-img logo-chronex">
+    <img src="ChronexSystems_White.jpeg" alt="Chronex Systems" class="logo-img logo-chronex">
     <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle Dark/Light Mode">
       <svg id="themeIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
     </button>
@@ -400,9 +396,9 @@
   }
 
   /* ====== TRANSFER CORE ====== */
-  const CHUNK_SIZE          = 1 * 1024 * 1024;   // 1 MB
-  const MAX_BUFFERED_AMOUNT = 16 * 1024 * 1024;  // 16 MB buffer ceiling
-  const PIPELINE_AHEAD      = 6;                 // prefetch up to 6 chunks
+  const CHUNK_SIZE          = 1 * 1024 * 1024;   
+  const MAX_BUFFERED_AMOUNT = 16 * 1024 * 1024;  
+  const PIPELINE_AHEAD      = 6;                 
   const DRAIN_POLL_MS       = 16;                
 
   let peer, conn;
@@ -422,7 +418,6 @@
   let rxBatchCount   = 0;
   let rxBatchReceived = 0;
 
-  /* ---- LOG ---- */
   function log(msg, type = '') {
     const el  = document.getElementById('log');
     const entry = document.createElement('span');
@@ -433,35 +428,40 @@
     el.scrollTop = el.scrollHeight;
   }
 
-  /* ---- STATUS ---- */
   function setStatus(text, type) {
     const box = document.getElementById('statusBox');
     box.className = 'status-indicator ' + type;
     document.getElementById('statusText').textContent = text;
   }
 
-  /* ---- PEER UTILS ---- */
   function generateId() {
     const n = () => Math.floor(1000 + Math.random()*9000);
     return `${n()}-${n()}`;
   }
+  
   function formatId(raw) {
     const d = raw.replace(/\D/g,'').slice(0,8);
     return d.length > 4 ? d.slice(0,4)+'-'+d.slice(4) : d;
   }
+  
   function formatInput(el) {
     el.value = formatId(el.value);
     document.getElementById('connectBtn').disabled = el.value.replace('-','').length < 8;
   }
+  
   function copyId() {
     navigator.clipboard.writeText(document.getElementById('myId').textContent)
       .then(() => log('Station PIN copied to clipboard.', 'info'));
   }
 
-  /* ---- INIT PEER ---- */
   function initPeer() {
     const id = generateId();
     document.getElementById('myId').textContent = id;
+
+    if (typeof Peer === 'undefined') {
+        log('Error: Protocol Library blocked. Check internet or security settings.', 'err');
+        return;
+    }
 
     peer = new Peer(id, {
       config: { iceServers: [
@@ -528,13 +528,13 @@
       rxBatchTotal    = data.count;
       rxBatchReceived = 0;
       log(`Incoming payload: ${data.count} file(s), ${fmtSize(data.totalSize)}`, 'info');
+      
       if (peerTrusted) {
         conn.send({ type: 'accept' });
         showProgress(0, 'Preparing to receive...');
       } else {
         document.getElementById('incomingName').textContent = `${data.count} File(s) attached`;
-        document.getElementById('incomingMeta').textContent =
-          `Total Size: ${fmtSize(data.totalSize)}`;
+        document.getElementById('incomingMeta').textContent = `Total Size: ${fmtSize(data.totalSize)}`;
         document.getElementById('incomingBanner').style.display = 'block';
       }
 
@@ -553,9 +553,11 @@
       const blob = new Blob(rxChunks, { type: rxMeta.mime });
       downloadBlob(blob, rxMeta.name);
       log(`Received: ${rxMeta.relativePath || rxMeta.name} (${fmtSize(rxMeta.size)})`, 'ok');
+      
       rxBatchReceived++;
       incomingQueue.shift();
       rxMeta = null; rxChunks = []; rxBytes = 0;
+      
       if (incomingQueue.length > 0) receiveNextFile();
       else { hideProgress(); log('Transfer completed successfully.', 'ok'); }
 
@@ -578,27 +580,23 @@
   }
 
  async function downloadBlob(blob, filename) {
-    // Check if the modern save feature is supported
+    // Check if the modern save feature is supported (HTTPS only)
     if (window.showSaveFilePicker) {
       try {
-        // Force the prompt to open on the Desktop
         const fileHandle = await window.showSaveFilePicker({
           suggestedName: filename,
           startIn: 'desktop'
         });
-        
-        // Write the data to the chosen location
         const writable = await fileHandle.createWritable();
         await writable.write(blob);
         await writable.close();
-        return; // Success, exit the function
+        return; 
       } catch (err) {
-        // If the user clicks "Cancel", safely abort
         if (err.name === 'AbortError') return;
       }
     }
     
-    // Fallback for older browsers (uses default Downloads folder)
+    // Fallback if rejected or browser unsupported
     const url = URL.createObjectURL(blob);
     const a   = document.createElement('a');
     a.href = url; a.download = filename; a.click();
@@ -955,8 +953,10 @@
     return (bytes/1024/1024/1024).toFixed(2) + ' GB';
   }
 
-  // Initialize
-  initPeer();
+  // Initialize App
+  document.addEventListener("DOMContentLoaded", () => {
+    initPeer();
+  });
 </script>
 </body>
 </html>
