@@ -577,7 +577,28 @@
     showProgress(0, `Receiving [${rxBatchReceived+1}/${rxBatchTotal}]: ${rxMeta.name}`);
   }
 
-  function downloadBlob(blob, filename) {
+ async function downloadBlob(blob, filename) {
+    // Check if the modern save feature is supported
+    if (window.showSaveFilePicker) {
+      try {
+        // Force the prompt to open on the Desktop
+        const fileHandle = await window.showSaveFilePicker({
+          suggestedName: filename,
+          startIn: 'desktop'
+        });
+        
+        // Write the data to the chosen location
+        const writable = await fileHandle.createWritable();
+        await writable.write(blob);
+        await writable.close();
+        return; // Success, exit the function
+      } catch (err) {
+        // If the user clicks "Cancel", safely abort
+        if (err.name === 'AbortError') return;
+      }
+    }
+    
+    // Fallback for older browsers (uses default Downloads folder)
     const url = URL.createObjectURL(blob);
     const a   = document.createElement('a');
     a.href = url; a.download = filename; a.click();
