@@ -64,16 +64,31 @@
     box-shadow: var(--shadow);
   }
 
-  .header-left, .header-right { display: flex; align-items: center; gap: 1rem; width: 220px; }
-  .header-right { justify-content: flex-end; }
+ .header-left { display: flex; align-items: center; flex: 1; justify-content: flex-start; }
   .header-center { text-align: center; flex: 1; }
+  .header-right { display: flex; align-items: center; flex: 1; justify-content: flex-end; gap: 1rem; }
 
   .brand-text h1 { font-size: 1.6rem; font-weight: 800; color: var(--primary); letter-spacing: -0.02em; margin-bottom: 0.2rem; }
   .brand-text p  { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 
-  .logo-img { height: 50px; border-radius: 6px; object-fit: contain; }
-  .logo-akanksha { background: #ffffff; padding: 2px; } 
-  .logo-chronex { background: #ffffff; padding: 2px; } 
+ /* Base logo settings */
+  .logo-img { border-radius: 6px; object-fit: contain; flex-shrink: 0; }
+
+  /* Akanksha: Lock height, let width adjust naturally so it never crops */
+  .logo-akanksha { 
+    height: 55px; 
+    width: auto; 
+    background: #ffffff; 
+    padding: 4px; 
+  } 
+
+  /* Chronex: Lock width to make it much larger, let height adjust naturally */
+  .logo-chronex { 
+    width: 180px; 
+    height: auto; 
+    background: #ffffff; 
+    padding: 4px; 
+  }
 
   .theme-toggle {
     background: var(--bg-page); color: var(--text-main);
